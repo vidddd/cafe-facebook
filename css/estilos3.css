@@ -1,0 +1,322 @@
+@charset "utf-8";
+body{
+	background-color: #fff;
+    color: #1d1d1b;
+	font-family:"Oswald",verdana,arial;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 26px;
+    margin: 0;
+    padding: 0;
+}
+img, div{
+	margin:0;
+	padding:0;
+	border:none 0;
+}
+#wrapper{
+	width:810px;
+	/*height:auto;*/
+    margin: 0 auto;
+/*	padding-bottom: 50px;
+	display: table;*/
+/*  padding-top: 140px; */
+}
+
+/*
+#cabecera, #pie{
+	float:left;
+	width:100%;
+	height:auto;
+}*/
+#cabecera{
+	padding:45px 0 30px;
+	float:left;
+	width:100%;
+}
+#cabecera2 {
+	display:none;
+}
+/* SAfari IOS */
+@supports (-webkit-marquee-repetition:infinite) and (object-fit:fill) {
+  #wrapper{
+	 padding-top: 140px;
+	}
+	#cabecera{
+		display:none;
+	}
+	#cabecera2 {
+		display:block;
+		position:absolute;
+		top: 0; left: 0;
+		height: 140px;
+	}
+	#cabecera2 img{
+		height: 140px;
+		width: 810px;
+		border: none 0;
+	}
+}
+/* Microsoft Edge Browser 12+ (All) - one-liner method */
+_:-ms-lang(x), _:-webkit-full-screen, #wrapper  {
+   padding-top: 111px;
+}
+_:-ms-lang(x), _:-webkit-full-screen, #cabecera  {
+    display:none;
+ }
+ _:-ms-lang(x), _:-webkit-full-screen, #cabecera2 {
+	 display:block;
+	 position:absolute;
+	 top: 0; left:30%;
+	 height: 110px;
+ }
+ _:-ms-lang(x), _:-webkit-full-screen, .texto_arriba  {
+     line-height: 12px;
+  }
+
+.pagina{
+	width:690px;
+	height:auto;
+	float:left;
+	text-align:center;
+	padding:20px 20px 40px;
+	margin: 0 40px;
+	background-color: #FCE08D;
+}
+.textos{
+	width: 100%;
+	height: auto;
+	float: left;
+	text-align: center;
+}
+.btns_cont{
+	width: 100%;
+	height: auto;
+	float: left;
+	text-align: center;
+}
+.activo{
+	background-image: url(../images/cafe_icon_activo.png) !important;
+}
+.activo .txt{
+	color:#fce08d !important;
+}
+.cafe_btn{
+	width:156px;
+	height: 194px;
+	background-image: url(../images/cafe_icon.png);
+	background-position: center center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin: 0 20px;
+	transition: 0.3s ease-out;
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+}
+.cafe_btn:hover{
+	cursor: pointer;
+	background-size: 95% auto;
+}
+.cafe_btn:hover .txt{
+	color:#fce08d;
+}
+.cafe_btn .txt{
+	color: #fff;
+    display: table-cell;
+    font-size: 17px;
+    font-weight: 200;
+    height: 144px;
+    line-height: 20px;
+    padding: 35px 10px 15px;
+    text-align: center;
+    vertical-align: middle;
+    width: 136px;
+	transition: 0.3s ease-out;
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+}
+/*-------- visor constructor -------------------*/
+.visor{
+	width:100%;
+	height:auto;
+	float:left;
+	padding:0;
+	margin: 0;
+	background-color: #fff;
+}
+.texto_arriba{
+	width:100%;
+	height:auto;
+	float:left;
+	text-align:center;
+	padding:0 0 20px;
+	margin: 0;
+	font-weight: 300;
+    line-height: 26px;
+}
+.texto_arriba h3{
+	font-size: 30px;
+    font-weight: 500;
+	margin: 0 auto 5px;
+}
+.contenedor{
+	width: 652px;
+	height: 500px;
+	padding: 0px 79px;
+}
+.flecha{
+	width: 50px;
+	height: 500px;
+	float: left;
+	cursor: pointer;
+	transition: 0.3s ease-out;
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+	opacity: 0.5;
+}
+.flecha:hover{
+	opacity: 1;
+}
+.izq{
+	padding:0 15px 0 10px;
+	text-align: right;
+}
+.izq:hover{
+	padding:0 25px 0 0px;
+}
+.dch{
+	padding:0 10px 0 15px;
+}
+.dch:hover{
+	padding:0 0 0 25px;
+}
+.flecha img{
+	position: relative;
+	top:50%;
+	transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+.marco{
+	float: left;
+	height: 500px;
+	width: 500px;
+	border: solid 1px #000;
+	background-color: #f5f5f5;
+	position:relative;
+	margin:0; padding:0px;
+	overflow: hidden;
+	background-image: url(../images/bg_gris.jpg);
+	background-size: 100% 100%;
+}
+.marco img{
+	width: 100%;
+	height: 100%;
+}
+#canvas {
+	width:500px;
+	height:500px;
+}
+#canvas2 {
+	width:500px;
+	height:500px;
+}
+#canvas2 img {
+	display:block;
+}
+.tema, .taza, .color, .mensaje, .mensaje2{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+.tema{
+	z-index: 5;
+}
+.taza{
+	z-index: 7;
+}
+.color{
+	z-index: 2;
+}
+.mensaje{
+	  color: #fff;
+  /*  font-size: 23px;
+    height: auto;
+    left: 0;
+    line-height: 20px;
+    padding: 0 5%;
+    position: absolute;
+    text-align: center;
+    top: 4%;
+    width: 90%;*/
+    z-index: 10;
+}
+.mensaje2{
+	  color: #fff;
+    font-size: 23px;
+    height: auto;
+    left: 0;
+    line-height: 20px;
+    padding: 0 5%;
+    position: absolute;
+    text-align: center;
+    top: 74%;
+    width: 90%;
+    z-index: 10;
+}
+.menu_constructor{
+	background-image: url("../images/visor/linea_abajo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    height: 100px;
+    margin: 30px 0;
+    text-align: center;
+    width: 100%;
+}
+.cafe_btn_const{
+	width:79px;
+	height: 100px;
+	background-image: url(../images/cafe_icon.png);
+	background-position: center center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin: 0 20px;
+	transition: 0.3s ease-out;
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+}
+.cafe_btn_const:hover{
+	cursor: pointer;
+	background-size: 95% auto;
+}
+.cafe_btn_const:hover .txt{
+	color:#fce08d;
+}
+.cafe_btn_const .txt{
+	  color: #fff;
+    display: table-cell;
+    font-size: 13px;
+    font-weight: 200;
+    width:79px;
+	  height: 50px;
+    line-height: 20px;
+    padding: 30px 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+	transition: 0.3s ease-out;
+	-webkit-transition: 0.3s ease-in-out;
+	-moz-transition: 0.3s ease-in-out;
+}
+.texto_arriba a, .cafe_btn_const a{
+	color:#000;
+	cursor: pointer;
+	text-decoration: none;
+}
+.bt_compartir {
+	margin-top:-15px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MCD</title>
+<meta name="viewport" content="width=810px; user-scalable=0;">
+<meta property="og:url"                content="https://promofb.es/tab_cafe/compartir.html" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="MC CAFE - Por un lunes menos lunes" />
+<meta property="og:description"        content="Este es mi Mc Cafe" />
+<meta property="og:image"              content="https://promofb.es/tab_cafe/images/COMPARTIR.PNG" />
+<meta property="og:image:secure_url"   content="https://promofb.es/tab_cafe/images/COMPARTIR.PNG" />
+<meta property="fb:app_id"              content="327845837720712" />
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700" rel="stylesheet">
+<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '327845837720712',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.12'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="cabecera"><img src="images/arriba.png" /></div>
+	<div id="constructor" class="visor">
+		<div class="contenedor">
+
+			<div class="marco">
+			<p><img src="images/COMPARTIR.PNG" ></p>
+			</div>
+
+		</div>
+
+		<div class="texto_arriba"><P><a id="compartirbtn" href="">COMPARTIR</a></P>
+		</div>
+	</div>
+	<script>
+		document.getElementById('compartirbtn').onclick = function() {
+		  FB.ui({
+		    method: 'share',
+		    display: 'popup',
+		    href: 'https://promofb.es/tab_cafe/compartir.html',
+				//href: 'https://developers.facebook.com/docs/',
+		  }, function(response){});
+		}
+</script>
+</div>
+</body>
+</html>

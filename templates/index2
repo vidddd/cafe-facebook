@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="cabecera"><a href="index.php"><img src="images/arriba.png" /></a></div>
+	{% if compartir == 1 %}
+
+	{% else %}
+		<div id="intro" class="pagina">
+					<input type="hidden" id="idcafe" value="{{ idcafe }}" />
+			<div class="textos">
+				<p><img src="images/logo_mcd.jpg" class="mcd"></p>
+				<p>En McDonald's pensamos que el lunes <br>puede pasar de ser un día chof a un día top. <br>Por eso, queremos envíes un mensaje <br>que alegre el día a esa persona que necesita <br>doble de café para sobrevivir al lunes. </p>
+			</div>
+			<div class="btns_cont">
+				<div class="cafe_btn" onClick="comenzar('constructor');"><div class="txt">CREA<br>EL TUYO</div></div>
+				<div class="cafe_btn" onClick="comenzar('prefijados');"><div class="txt">ELIGE EL DE<br>UN DISEÑADOR<br>EXCLUSIVO</div></div>
+			</div>
+			</div>
+		<div id="constructor" class="visor" style="display:none;">
+			<div class="texto_arriba">
+				<h3>Alégrale el día a alguien</h3>
+				<p>Combina entre todas las opciones<br>para personalizar tu mensaje y crear una imagen TOP.</p>
+			</div>
+			<div class="contenedor">
+				<div class="flecha izq">
+					<img src="images/flecha_izq.png" onClick="MoverCarrusel('izq')">
+				</div>
+
+				<div class="marco">
+				 <div id="canvas">
+					<div class="tema">
+						<img src="images/visor/tema1.png" id="tema1" style="display: none;">
+						<img src="images/visor/tema2.png" id="tema2" style="display: none;">
+						<img src="images/visor/tema3.png" id="tema3" style="display: none;">
+						<img src="images/visor/tema4.png" id="tema4" style="display: none;">
+						<img src="images/visor/tema5.png" id="tema5" style="display: none;">
+					</div>
+					<div class="color">
+						<img src="images/visor/fondo1.jpg" id="fondo1" style="display: none;">
+						<img src="images/visor/fondo2.jpg" id="fondo2" style="display: none;">
+						<img src="images/visor/fondo3.jpg" id="fondo3" style="display: none;">
+						<img src="images/visor/fondo4.jpg" id="fondo4" style="display: none;">
+						<img src="images/visor/fondo5.jpg" id="fondo5" style="display: none;">
+					</div>
+					<div class="taza">
+						<img src="images/visor/taza1.png" id="taza1" style="display: none;">
+						<img src="images/visor/taza2.png" id="taza2" style="display: none;">
+						<img src="images/visor/taza3.png" id="taza3" style="display: none;">
+						<img src="images/visor/taza4.png" id="taza4" style="display: none;">
+						<img src="images/visor/taza5.png" id="taza5" style="display: none;">
+					</div>
+					<div class="mensaje">
+						<span id="texto1" style="display: none;">1 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="texto2" style="display: none;">2 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="texto3" style="display: none;">3 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="texto4" style="display: none;">4 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="texto5" style="display: none;">5 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+					</div>
+				</div>
+				</div>
+				<div class="flecha dch">
+					<img src="images/flecha_dch.png" onClick="MoverCarrusel('dch');">
+				</div>
+			</div>
+			<div class="menu_constructor">
+				<div class="cafe_btn_const bt_color" onClick="cambiarColor();"><div class="txt">COLOR</div></div>
+				<div class="cafe_btn_const bt_taza" onClick="cambiarTaza();"><div class="txt">TAZA</div></div>
+				<div class="cafe_btn_const bt_tema" onClick="cambiarTema();"><div class="txt">TEMA</div></div>
+				<div class="cafe_btn_const bt_mensaje" onClick="cambiarMensaje();"><div class="txt">MENSAJE</div></div>
+			</div>
+			<div class="texto_arriba">
+				<a onClick="verFinal(); return false;" id="aceptar1" style="display:none;">ACEPTAR</a>
+			</div>
+		</div>
+		<div id="prefijados" class="visor" style="display:none">
+			<div class="texto_arriba">
+				<h3>Alégrale el día a alguien</h3>
+				<p>Escoge la imagen que más te guste<br> y envíasela a esa persona que necesita que le alegren el lunes.</p>
+			</div>
+			<div class="contenedor">
+				<div class="flecha izq">
+					<img src="images/flecha_izq.png" onClick="MoverCarrusel2('izq')">
+				</div>
+				<div class="marco" id="marco">
+				<div id="canvas2">
+					<div class="tema">
+						<img src="images/visor/ilustracion1.jpg" id="ilustracion1" style="display: none">
+						<img src="images/visor/ilustracion2.jpg" id="ilustracion2" style="display: none">
+						<img src="images/visor/ilustracion3.jpg" id="ilustracion3" style="display: none">
+						<img src="images/visor/ilustracion4.jpg" id="ilustracion4" style="display: none">
+						<img src="images/visor/ilustracion5.jpg" id="ilustracion5" style="display: none">
+					</div>
+					<div class="mensaje">
+						<span id="mensaje1" style="display: none">1 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="mensaje2" style="display: none">2 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="mensaje3" style="display: none">3 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="mensaje4" style="display: none">4 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+						<span id="mensaje5" style="display: none">5 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+					</div>
+				</div>
+				</div>
+				<div class="flecha dch">
+					<img src="images/flecha_dch.png" onClick="MoverCarrusel2('dch');">
+				</div>
+			</div>
+			<div class="menu_constructor">
+				<div class="cafe_btn_const bt_ilustracion" onClick="cambiarIlustracion();"><div class="txt">ILUSTRACIÓN</div></div>
+				<div class="cafe_btn_const bt_mensaje2" onClick="cambiarMensaje2();"><div class="txt">MENSAJE</div></div>
+			</div>
+			<div class="texto_arriba">
+				<a onClick="verFinal2(); return false;" id="aceptar2" style="display:none;">ACEPTAR</a>
+			</div>
+		</div>
+
+		<div id="final" class="visor" style="display:none;">
+			<div class="texto_arriba">
+				<img src="images/logo_negro.jpg">
+			</div>
+			<div class="contenedor">
+				<div class="flecha izq">
+				</div>
+				<div class="marco">
+					<div class="tema">
+						<img id="imagef" src="cafe-finals/{{ cafeid }}.jpg">
+					</div>
+				</div>
+				<div class="flecha dch">
+
+				</div>
+			</div>
+			<div class="menu_constructor">
+				<div class="cafe_btn_const bt_atras" style="display:none;"><div onclick="atras(); return false;" class="txt">ATRÁS</div></div>
+				<div class="cafe_btn_const bt_atras2" style="display:none;" ><div onclick="atras2(); return false;" class="txt">ATRÁS</div></div>
+				<div class="cafe_btn_const bt_compartir"><a id="compartirlink" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" target="_blank"><div class="txt">COMPARTIR</div></a></div>
+			</div>
+		</div>
+
+	{% endif %}
+{% endblock %}

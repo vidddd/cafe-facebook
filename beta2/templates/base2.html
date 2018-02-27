@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video#">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MCD</title>
+<meta name="viewport" content="width=810px; user-scalable=0;">
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700" rel="stylesheet">
+<link href="css/estilos2.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
+<script type="text/javascript" src="node_modules/rasterizehtml/dist/rasterizeHTML.allinone.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/main2.js"></script>
+<link rel="canonical" href="https://cafe.promofb.es/index.php?cafeid={{ cafeid }}" />
+<meta property="fb:app_id" content="327845837720712">
+{% if compartir == 1 %}
+ <meta property="og:type"   content="video.other" />
+ <meta property="og:url"    content="https://cafe.promofb.es/cafe-finals/{{ cafeid }}-2.jpg" />
+ <meta property="og:title"  content="Por un Lunes menos lunes" />
+ <meta property="og:image"  content="https://cafe.promofb.es/cafe-finals/{{ cafeid }}-2.jpg" />
+ <meta property="og:image:width" content="650">
+ <meta property="og:image:height" content="500">
+{% else %}
+<meta property="og:url"           content="https://cafe.promofb.es/" />
+<meta property="og:image"         content="https://cafe.promofb.es/images/final.jpg" />
+<meta property="og:type"          content="website" />
+{% endif %}
+<meta property="og:title"         content="Por un Lunes menos lunes" />
+<meta property="og:description"   content="En McDonald's pensamos que el lunes puede pasar de ser un día chof a un día top.
+Por eso, queremos envíes un mensaje que alegre el día a esa persona que necesita
+doble de café para sobrevivir al lunes. " />
+<meta name="rating" content="general">
+<meta name="image:rating" content="g">
+</head>
+
+<body>
+<div id="wrapper">
+  {% block content %}
+
+  {% endblock %}
+</div>
+</body>
+</html>
