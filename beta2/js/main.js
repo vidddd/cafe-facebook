@@ -1,10 +1,12 @@
 function comenzar(opcion){
-	gtag('event', 'Crea_el_tuyo');
+
 	$("#intro").css("display","none");
 	if(opcion=="constructor"){
+			gtag('event', 'Crea_el_tuyo');
 		$("#constructor").css("display","block");
 	}else if(opcion=="prefijados"){
 		$("#prefijados").css("display","block");
+			gtag('event', 'Elige_Disenador_Exclusivo');
 	}
 }
 controlVisorConstructor="nada";
@@ -196,18 +198,18 @@ function MoverCarrusel2(direccion){
 			if(posicionIlustracion>1){
 				posicionIlustracion--;
 			}else{
-				posicionIlustracion=5;
+				posicionIlustracion=4;
 			}
-			$("#ilustracion"+posicionIlustracion).css("display","block");
+			$("#ilustracion"+posicionIlustracion).css("display","block");$('#ilustracionh').val(posicionIlustracion);
 		}
 		if(direccion=='dch'){
 			$("#ilustracion"+posicionIlustracion).css("display","none");
-			if(posicionIlustracion<5){
+			if(posicionIlustracion<4){
 				posicionIlustracion++;
 			}else{
 				posicionIlustracion=1;
 			}
-			$("#ilustracion"+posicionIlustracion).css("display","block");
+			$("#ilustracion"+posicionIlustracion).css("display","block");$('#ilustracionh').val(posicionIlustracion);
 		}
 	}
 	/*---------------- Mensaje -------------------------*/
@@ -217,18 +219,18 @@ function MoverCarrusel2(direccion){
 			if(posicionMensaje>1){
 				posicionMensaje--;
 			}else{
-				posicionMensaje=5;
+				posicionMensaje=7;
 			}
-			$("#mensaje"+posicionMensaje).css("display","block");
+			$("#mensaje"+posicionMensaje).css("display","block");$('#mensajeh').val(posicionMensaje);
 		}
 		if(direccion=='dch'){
 			$("#mensaje"+posicionMensaje).css("display","none");
-			if(posicionMensaje<5){
+			if(posicionMensaje<7){
 				posicionMensaje++;
 			}else{
 				posicionMensaje=1;
 			}
-			$("#mensaje"+posicionMensaje).css("display","block");
+			$("#mensaje"+posicionMensaje).css("display","block");$('#mensajeh').val(posicionMensaje);
 		}
 	}
 }
@@ -240,6 +242,7 @@ function cambiarIlustracion(){
 		posicionIlustracion=1;
 		$("#ilustracion1").css("display","block");
 	}
+	$('#ilustracionh').val(posicionIlustracion);
 	if(posicionIlustracion != 0 && posicionMensaje != 0) {
 			$('#aceptar2a').css("display","none");
 			$('#aceptar2').show();
@@ -253,6 +256,7 @@ function cambiarMensaje2(){
 		posicionMensaje=1;
 		$("#mensaje1").css("display","block");
 	}
+	$('#mensajeh').val(posicionMensaje);
 	if(posicionIlustracion != 0 && posicionMensaje != 0) {
 		$('#aceptar2a').css("display","none");
 		$('#aceptar2').show();
@@ -260,56 +264,18 @@ function cambiarMensaje2(){
 }
 function verFinal(){
 	gtag('event', 'Continuar');
-		var node = document.getElementById('canvas');
-		var canvas = document.querySelector("canvas");
+		//var node = document.getElementById('canvas');
+	//	var canvas = document.querySelector("canvas");
 	save_img2();
-/*
-		if(iOS() || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-	save_img2();
-		} // detect IE8 and above, and edge
-		 else if (document.documentMode || /Edge/.test(navigator.userAgent)){
-			html2canvas(node).then(function(canvas) {
-					var base64image = canvas.toDataURL("image/jpeg");
-					save_img(base64image);
-			});
-		}
-		else {
-				var options = { quality: 0.99 };
-				domtoimage.toJpeg(node, options).then(function (dataUrl) {
-					save_img(dataUrl);
-				});
-			}
-*/
-		$(".bt_atras").show();
+		$(".bt_atras").show();	$(".bt_atras2").hide();
 }
 
 
 function verFinal2(){
-	 var node = document.getElementById('canvas2');
-	 var canvas = document.querySelector("canvas");
-
-	 if(iOS() || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 ) {
-
-		 html2canvas(node).then(function(canvas) {
-		     var base64image = canvas.toDataURL("image/jpeg");
-		 	 	 save_img(base64image);
-		 });
-	 } // detect IE8 and above, and edge
-	  else if (document.documentMode || /Edge/.test(navigator.userAgent)){
-		 html2canvas(node).then(function(canvas) {
-				 var base64image = canvas.toDataURL("image/jpeg");
-				 save_img(base64image);
-		 });
-  }
-	else {
-		var options = { quality: 0.99 };
-		domtoimage.toJpeg(node, options).then(function (dataUrl) {
-			save_img(dataUrl);
-		}).catch(function (error) {
-          alert(error);
-        });
-		}
-		$(".bt_atras2").show();
+	gtag('event', 'Continuar');
+	save_img3();
+	$(".bt_atras2").show();
+	$(".bt_atras").hide();
 }
 function atras3() {
 	controlVisorPrefijado="nada";
@@ -324,38 +290,39 @@ posicionIlustracion=0;posicionMensaje=0;
 function save_img(data){
 			idcafe = $('#idcafe').val();
 			$.post('save-jpg.php', {data: data, idcafe: idcafe}, function(res){
-				//if the file saved properly, trigger a popup to the user.
 				if(res != ''){
-					//location.href ='https://cafe.promofb.es/index.php?cafeid='+res;
 					d = new Date();
 					$("#imagef").attr("src", "cafe-finals/"+idcafe+".jpg?"+d.getTime());
 					$("#final").show();
 					$('#prefijados').hide();
 					$('#intro').hide();$('#constructor').hide();
 					$('#compartirlink').attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid="+idcafe);
-					$('#adescargar').attr("href", "cafe-finals/"+idcafe+".jpg");
+					$('#adescargar').attr("href", "https://cafe.promofb.es/cafe-finals/"+idcafe+".jpg");
 				}
 				else{
 					alert('Fallo al generar la foto');
 				}
 			});
 		}
+
+
 		function save_img2(){
 			var idcafe = $('#idcafe').val();
 			var fondo = $('#fondoh').val();
 			var taza = $('#tazah').val();
 			var tema = $('#temah').val();
 			var texto = $('#textoh').val();
-
 					$.get('new-images.php', { idcafe : idcafe, fondo: fondo, taza: taza, tema: tema, texto: texto }, function(res){
 						//if the file saved properly, trigger a popup to the user.
 						if(res != ''){
-							$('#final').show();
+							//location.href ='https://cafe.promofb.es/index.php?cafeid='+res;
 							d = new Date();
-							$(".imagef").attr("src", "cafe-finals/"+idcafe+".jpg?"+d.getTime());
+							$("#imagef").attr("src", "cafe-finals/"+idcafe+".jpg?"+d.getTime());
+							$("#final").show();
 							$('#prefijados').hide();
 							$('#intro').hide();$('#constructor').hide();
-							$('.compartirlink').attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/beta2/index.php?cafeid="+idcafe);
+							$('.bt_compartir').show();$('.bt_compartir2').hide();
+							$('#compartirlink').attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid="+idcafe);
 							$('#adescargar').attr("href", "cafe-finals/"+idcafe+".jpg");
 						}
 						else{
@@ -364,6 +331,28 @@ function save_img(data){
 					});
 				}
 
+				function save_img3(){
+					var idcafe = $('#idcafe').val();
+					var ilustracion = $('#ilustracionh').val();
+					var mensaje = $('#mensajeh').val();
+							$.get('new-images2.php', { idcafe : idcafe, ilustracion: ilustracion, mensaje: mensaje }, function(res){
+								//if the file saved properly, trigger a popup to the user.
+								if(res != ''){
+									//location.href ='https://cafe.promofb.es/index.php?cafeid='+res;
+									d = new Date();
+									$("#imagef").attr("src", "cafe-finals/"+idcafe+".jpg?"+d.getTime());
+									$("#final").show();
+									$('#prefijados').hide();
+									$('#intro').hide();$('#constructor').hide();
+									$('.bt_compartir').hide();$('.bt_compartir2').show();
+									$('#compartirlink2').attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid="+idcafe);
+									$('#adescargar').attr("href", "cafe-finals/"+idcafe+".jpg");
+								}
+								else{
+									alert('Fallo al generar la foto');
+								}
+							});
+						}
 
 function atras() {
 		$("#final").hide();
@@ -374,10 +363,6 @@ function atras2() {
 		$('#constructor').hide();
 		$('#prefijados').show();
 }
-function creatuyo() {
-		$("#final").hide();$("#final2").hide();
-		$('#constructor').show();	$('#prefijados').hide();
-	}
 function iOS() {
   var iDevices = [
     'iPad Simulator',

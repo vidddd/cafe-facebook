@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-	<div id="final2" class="visor" {% if compartir == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}>
+
+	{% if compartir == 1 %}
+	<div id="final" class="visor" >
 		<div class="texto_arriba">
 			<img src="images/logo_negro.jpg">
 		</div>
@@ -9,21 +11,24 @@
 			</div>
 			<div class="marco">
 				<div class="tema">
-					<img id="imagef2" src="cafe-finals/{{ cafeid }}.jpg">
+					<img id="imagef" src="cafe-finals/{{ cafeid }}.jpg">
 				</div>
 			</div>
 			<div class="flecha dch">
 			</div>
 		</div>
 		<div class="menu_constructor">
-				<div class="cafe_btn_const bt_descargar" ><div onclick="" class="txt"><a href="index.php" onclick="" >CREA EL TUYO</a></div></div>
+			<div class="cafe_btn_const bt_descargar" ><div onclick="" class="txt"><a href="index.php" onclick="" >CREA EL TUYO</a></div></div>
+			<div class="cafe_btn_const bt_atras" style="display:none;"><div onclick="atras(); return false;" class="txt">ATRÁS</div></div>
+			<div class="cafe_btn_const bt_atras2" style="display:none;" ><div onclick="atras2(); return false;" class="txt">ATRÁS</div></div>
 			<div class="cafe_btn_const bt_descargar" ><div onclick="" class="txt"><a href="cafe-finals/{{ cafeid}}.jpg" target="_blank" >DESCARGAR</a></div></div>
-			<div class="cafe_btn_const bt_compartir"><a id="compartirlink2" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/beta2/index.php?cafeid={{ cafeid }}" style="display:block;" target="_blank"><div class="txt">COMPARTIR</div></a></div>
+			<div class="cafe_btn_const bt_compartir"><a id="compartirlink" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" style="display:block;" onclic="gtag('event', 'Compartir_El_Tuyo');" target="_blank"><div class="txt">COMPARTIR</div></a></div>
+			<div class="cafe_btn_const bt_compartir2" style="display:none;"><a id="compartirlink2" onclic="gtag('event', 'Compartir_Ilustracion');" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" style="display:block;" target="_blank"><div class="txt">COMPARTIR</div></a></div>
 		</div>
 	</div>
-			<input type="hidden" id="idcafe" value="{{ idcafe }}" />
-		<div id="intro" class="pagina" {% if compartir == 1 %} style="display:none;" {% else %} style="display:block;" {% endif %}>
-
+	{% else %}
+		<div id="intro" class="pagina">
+					<input type="hidden" id="idcafe" value="{{ idcafe }}" />
 
 			<div class="textos">
 				<p><img src="images/logo_mcd.jpg" class="mcd"></p>
@@ -31,9 +36,9 @@
 			</div>
 			<div class="btns_cont">
 				<div class="cafe_btn" onClick="comenzar('constructor');"><div class="txt">CREA<br>EL TUYO</div></div>
-			<!--	<div class="cafe_btn" onClick="comenzar('prefijados');"><div class="txt">ELIGE EL DE<br>UN DISEÑADOR<br>EXCLUSIVO</div></div> -->
+				<div class="cafe_btn" onClick="comenzar('prefijados');"><div class="txt">ELIGE EL DE<br>UN DISEÑADOR<br>EXCLUSIVO</div></div>
 			</div>
-		</div>
+			</div>
 		<div id="constructor" class="visor" style="display:none;">
 			<input type="hidden" id="fondoh" value="" />
 			<input type="hidden" id="tazah" value="" />
@@ -99,6 +104,8 @@
 			</div>
 		</div>
 		<div id="prefijados" class="visor" style="display:none">
+			<input type="hidden" id="ilustracionh" value="" />
+			<input type="hidden" id="mensajeh" value="" />
 			<div class="texto_arriba">
 				<h3>Alégrale el día a alguien</h3>
 				<p>Escoge la imagen que más te guste<br> y envíasela a esa persona que necesita que le alegren el lunes.</p>
@@ -110,18 +117,19 @@
 				<div class="marco" id="marco">
 				<div id="canvas2">
 					<div class="tema">
-						<img src="images/visor/ilustracion1.jpg" id="ilustracion1" style="display: none">
-						<img src="images/visor/ilustracion2.jpg" id="ilustracion2" style="display: none">
-						<img src="images/visor/ilustracion3.jpg" id="ilustracion3" style="display: none">
-						<img src="images/visor/ilustracion4.jpg" id="ilustracion4" style="display: none">
-						<img src="images/visor/ilustracion5.jpg" id="ilustracion5" style="display: none">
+						<img src="images/ilus/ilustracion1.jpg" id="ilustracion1" style="display: none">
+						<img src="images/ilus/ilustracion2.jpg" id="ilustracion2" style="display: none">
+						<img src="images/ilus/ilustracion3.jpg" id="ilustracion3" style="display: none">
+						<img src="images/ilus/ilustracion4.jpg" id="ilustracion4" style="display: none">
 					</div>
-					<div class="mensaje2">
-						<span id="mensaje1" style="display: none">1 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
-						<span id="mensaje2" style="display: none">2 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
-						<span id="mensaje3" style="display: none">3 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
-						<span id="mensaje4" style="display: none">4 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
-						<span id="mensaje5" style="display: none">5 Lorem ipsum dolor sit amet<br> consectetur adipiscing elit.</span>
+					<div class="mensaje">
+						<img src="images/ilus/mensaje1.png" id="mensaje1" style="display: none">
+						<img src="images/ilus/mensaje2.png" id="mensaje2" style="display: none">
+						<img src="images/ilus/mensaje3.png" id="mensaje3" style="display: none">
+						<img src="images/ilus/mensaje4.png" id="mensaje4" style="display: none">
+						<img src="images/ilus/mensaje5.png" id="mensaje5" style="display: none">
+						<img src="images/ilus/mensaje6.png" id="mensaje6" style="display: none">
+						<img src="images/ilus/mensaje7.png" id="mensaje7" style="display: none">
 					</div>
 				</div>
 				</div>
@@ -148,7 +156,7 @@
 				</div>
 				<div class="marco">
 					<div class="tema">
-						<img class="imagef" id="imagef" src="cafe-finals/">
+						<img id="imagef" src="cafe-finals/{{ cafeid }}.jpg">
 					</div>
 				</div>
 				<div class="flecha dch">
@@ -159,9 +167,12 @@
 				<div class="cafe_btn_const bt_atras" style="display:none;"><div onclick="atras(); return false;" class="txt">ATRÁS</div></div>
 				<div class="cafe_btn_const bt_atras2" style="display:none;" ><div onclick="atras2(); return false;" class="txt">ATRÁS</div></div>
 				<div class="cafe_btn_const bt_descargar" ><div onclick="gtag('event', 'Descargar');" class="txt"><a href="" target="_blank" id="adescargar">DESCARGAR</a></div></div>
-				<div class="cafe_btn_const bt_compartir"><a  class="compartirlink" id="compartirlink" onclick="gtag('event', 'Compartir');"  href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" style="display:block;" target="_blank"><div class="txt">COMPARTIR</div></a></div>
+				<div class="cafe_btn_const bt_compartir"><a id="compartirlink" onclick="gtag('event', 'Compartir');"  href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" style="display:block;" target="_blank"><div class="txt">COMPARTIR</div></a></div>
+					<div class="cafe_btn_const bt_compartir2"><a id="compartirlink2" onclick="gtag('event', 'Compartir_Ilustracion');"  href="https://www.facebook.com/sharer/sharer.php?u=https%3A//cafe.promofb.es/index.php?cafeid={{ cafeid }}" style="display:block;" target="_blank"><div class="txt">COMPARTIR</div></a></div>
 			</div>
 		</div>
+  <p class="clearfix" style="text-align:center;">Consulta las <a href="http://cafe.promofb.es/pdf/BBLL_TAB_Cafe_febrero_2018.pdf" target="_blank">bases legales</a></p>
+	{% endif %}
 <div style="position:absolute; width:500px; height:500px;">
 	<canvas id="canvass" width="500" height="500"></canvas>
 </div>

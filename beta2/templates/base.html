@@ -7,21 +7,17 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700" rel="stylesheet">
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
-<script src="js/html2canvas.min.js"></script>
 <script src="js/main.js"></script>
-
+<link rel="canonical" href="https://cafe.promofb.es/beta2/index.php?cafeid={{ cafeid }}" />
 <meta property="fb:app_id" content="327845837720712">
 {% if compartir == 1 %}
-<link rel="canonical" href="https://cafe.promofb.es/index.php?cafeid={{ cafeid }}" />
  <meta property="og:type"   content="video.other" />
- <meta property="og:url"    content="https://cafe.promofb.es/beta2/cafe-finals/{{ cafeid }}-2.jpg" />
+ <meta property="og:url"    content="https://cafe.promofb.es/beta2/cafe-finals/{{ cafeid }}-2.jpg?{{ random }}" />
  <meta property="og:title"  content="Por un Lunes menos lunes" />
- <meta property="og:image"  content="https://cafe.promofb.es/beta2/cafe-finals/{{ cafeid }}-2.jpg" />
- <meta property="og:image:width" content="674">
- <meta property="og:image:height" content="500">
+ <meta property="og:image"  content="https://cafe.promofb.es/beta2/cafe-finals/{{ cafeid }}-2.jpg?{{ random }}" />
+ <meta property="og:image:width" content="1300">
+ <meta property="og:image:height" content="1000">
 {% else %}
-<link rel="canonical" href="https://cafe.promofb.es/index.php" />
 <meta property="og:url"           content="https://cafe.promofb.es/" />
 <meta property="og:image"         content="https://cafe.promofb.es/images/compartir.jpg" />
 <meta property="og:type"          content="website" />
@@ -69,8 +65,6 @@ FB.init({
 <div id="wrapper">
   {% block content %}
   {% endblock %}
-
-
 </div>
 
 </body>

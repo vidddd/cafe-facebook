@@ -11,13 +11,14 @@ $loader = new Twig_Loader_Filesystem('templates/');
 $twig = new Twig_Environment($loader, array());
 require_once __DIR__ . '/inc/db.class.php';
 $db = new Database();
+  $random = rand(100, 1000);
 
 if(!$_SESSSION['idcafe']) {
   $_SESSION['idcafe'] = uniqid();
 }
 
 if($_GET['cafeid']) {
-  echo $twig->render('index.html', array("compartir"=> 1, "cafeid" => $_GET['cafeid']));
+  echo $twig->render('index.html', array("compartir"=> 1, "cafeid" => $_GET['cafeid'], "random" => $random ));
 } else {
   echo $twig->render('index.html', array("idcafe"=> uniqid()));
 }
